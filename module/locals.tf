@@ -1,4 +1,3 @@
 locals {
-  cluster-name = var.cluster-name
+  cluster_name = var.cluster_name
 }
-

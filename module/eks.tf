@@ -1,5 +1,5 @@
 resource "aws_eks_cluster" "eks" {
-  name  = var.cluster-name
+  name  = var.cluster_name
   count = var.is-eks-cluster-enabled == true ? 1 : 0
 
   role_arn = aws_iam_role.eks-cluster-role[count.index].arn
@@ -18,7 +18,7 @@ resource "aws_eks_cluster" "eks" {
   }
 
   tags = {
-    Name = var.cluster-name
+    Name = var.cluster_name
     Env  = var.env
   }
 
@@ -48,7 +48,7 @@ resource "aws_eks_addon" "eks-addon" {
 #nodeGroups onDemand
 resource "aws_eks_node_group" "ondemand-node" {
   cluster_name    = aws_eks_cluster.eks[0].name
-  node_group_name = "${var.cluster-name}-on-demand-nodes"
+  node_group_name = "${var.cluster_name}-on-demand-nodes"
 
   node_role_arn = aws_iam_role.eks-nodegroup-role[0].arn
 
@@ -70,9 +70,9 @@ resource "aws_eks_node_group" "ondemand-node" {
     max_unavailable = 2
   }
   tags = {
-    "Name"                                      = "${var.cluster-name}-ondemand-nodes"
-    "kubernetes.io/cluster/${var.cluster-name}" = "owned"
-    "name"                                      = "${var.cluster-name}-ondemand-nodes"
+    "Name"                                      = "${var.cluster_name}-ondemand-nodes"
+    "kubernetes.io/cluster/${var.cluster_name}" = "owned"
+    "name"                                      = "${var.cluster_name}-ondemand-nodes"
   }
 
 
@@ -81,7 +81,7 @@ resource "aws_eks_node_group" "ondemand-node" {
 #SPOT NodeGroup
 resource "aws_eks_node_group" "spot-node" {
   cluster_name    = aws_eks_cluster.eks[0].name
-  node_group_name = "${var.cluster-name}-on-spot-nodes"
+  node_group_name = "${var.cluster_name}-on-spot-nodes"
 
   node_role_arn = aws_iam_role.eks-nodegroup-role[0].arn
   subnet_ids = [
@@ -110,9 +110,9 @@ resource "aws_eks_node_group" "spot-node" {
     max_unavailable = 2
   }
   tags = {
-    "Name"                                      = "${var.cluster-name}-spot-nodes"
-    "kubernetes.io/cluster/${var.cluster-name}" = "owned"
-    "name"                                      = "${var.cluster-name}-spot-nodes"
+    "Name"                                      = "${var.cluster_name}-spot-nodes"
+    "kubernetes.io/cluster/${var.cluster_name}" = "owned"
+    "name"                                      = "${var.cluster_name}-spot-nodes"
   }
 
   disk_size  = 50

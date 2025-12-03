@@ -1,6 +1,6 @@
 variable "aws-region" {}
 variable "cidr-block" {}
-variable "cluster-name" {}
+variable "cluster_name" {}
 variable "vpc-name" {}
 variable "env" {}
 variable "igw-name" {}
@@ -40,3 +40,12 @@ variable "min_capacity_on_spot" {}
 variable "max_capacity_on_spot" {}
 variable "spot_instance_types" {}
 
+
+# IAM
+variable "ec2-iam-role" {}
+variable "ec2-iam-role-policy" {}
+variable "ec2-iam-instance-profile" {}
+
+# EC2
+variable "ec2_name" {}
+variable "ec2_sg" {}
