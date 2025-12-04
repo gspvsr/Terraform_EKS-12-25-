@@ -24,3 +24,11 @@ B. OPN ID Provider
 C. Created Addons
 D. Created NodeGroups
     type : ondemond & spot
+
+****
+Note:- for creating EKS along with VPC please use eks_create folder. 
+after eks creation if needs to be installed, please use on_eks folder.
+(but ingress controller along with I am roles required.)
+****
+
+

@@ -34,7 +34,7 @@ resource "aws_subnet" "public-subnet" {
     Name                                          = "${var.pub-sub-name}-${count.index + 1}"
     ENV                                           = var.env
     "kubernetes.io/cluster/${local.cluster_name}" = "owned"
-    "kubernetes.io/roles/internal-elb"            = "1"
+    "kubernetes.io/role/internal-elb"            = "1"
   }
   depends_on = [aws_vpc.vpc]
 }
@@ -50,7 +50,7 @@ resource "aws_subnet" "private-subnet" {
     Name                                          = "${var.pvt-sub-name}-${count.index + 1}"
     ENV                                           = var.env
     "kubernetes.io/cluster/${local.cluster_name}" = "owned"
-    "kubernetes.io/roles/internal-elb"            = "1"
+    "kubernetes.io/role/internal-elb"            = "1"
   }
   depends_on = [aws_vpc.vpc]
 }
