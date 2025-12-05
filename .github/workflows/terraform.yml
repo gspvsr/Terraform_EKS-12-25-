@@ -45,15 +45,15 @@ jobs:
           terraform_version: 1.9.3
           terraform_wrapper: true
       
-      - name: Cache Terraform
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.terraform.d/plugin-cache
-            .terraform
-          key: ${{ runner.os }}-terraform-${{ hashFiles('**/*.tf') }}
-          restore-keys: |
-            ${{ runner.os }}-terraform-
+      # - name: Cache Terraform
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: |
+      #       ~/.terraform.d/plugin-cache
+      #       .terraform
+      #     key: ${{ runner.os }}-terraform-${{ hashFiles('**/*.tf') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-terraform-
 
       - name: Terraform Init
         run: terraform init
