@@ -38,16 +38,16 @@ module "eks" {
   spot_instance_types      = var.spot_instance_types
   aws-region               = var.aws-region
 
- 
+
 
   # IAM
-ec2-iam-role = var.ec2-iam-role
-ec2-iam-role-policy = var.ec2-iam-role-policy
-ec2-iam-instance-profile = var.ec2-iam-instance-profile
+  ec2-iam-role             = var.ec2-iam-role
+  ec2-iam-role-policy      = var.ec2-iam-role-policy
+  ec2-iam-instance-profile = var.ec2-iam-instance-profile
 
-#EC2
-ec2_name = var.ec2_name
-ec2_sg = var.ec2_sg
+  #EC2
+  ec2_name = var.ec2_name
+  ec2_sg   = var.ec2_sg
 }
 
 

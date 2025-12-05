@@ -34,7 +34,7 @@ resource "aws_subnet" "public-subnet" {
     Name                                          = "${var.pub-sub-name}-${count.index + 1}"
     ENV                                           = var.env
     "kubernetes.io/cluster/${local.cluster_name}" = "owned"
-    "kubernetes.io/role/internal-elb"            = "1"
+    "kubernetes.io/role/internal-elb"             = "1"
   }
   depends_on = [aws_vpc.vpc]
 }
@@ -50,7 +50,7 @@ resource "aws_subnet" "private-subnet" {
     Name                                          = "${var.pvt-sub-name}-${count.index + 1}"
     ENV                                           = var.env
     "kubernetes.io/cluster/${local.cluster_name}" = "owned"
-    "kubernetes.io/role/internal-elb"            = "1"
+    "kubernetes.io/role/internal-elb"             = "1"
   }
   depends_on = [aws_vpc.vpc]
 }
@@ -72,7 +72,7 @@ resource "aws_route_table" "public-rt" {
 }
 
 resource "aws_route_table_association" "pub-rta" {
-  count                   = length(var.pub-cidr-block)
+  count          = length(var.pub-cidr-block)
   subnet_id      = aws_subnet.public-subnet[count.index].id
   route_table_id = aws_route_table.public-rt.id
 
@@ -101,7 +101,7 @@ resource "aws_route_table" "private-rt" {
   vpc_id = aws_vpc.vpc.id
 
   route {
-    cidr_block = "0.0.0.0/0"
+    cidr_block     = "0.0.0.0/0"
     nat_gateway_id = aws_nat_gateway.ngw.id
   }
 
@@ -114,7 +114,7 @@ resource "aws_route_table" "private-rt" {
 }
 
 resource "aws_route_table_association" "pvt-rta" {
-  count                   = length(var.pvt-cidr-block)
+  count          = length(var.pvt-cidr-block)
   subnet_id      = aws_subnet.private-subnet[count.index].id
   route_table_id = aws_route_table.private-rt.id
 

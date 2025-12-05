@@ -35,7 +35,7 @@ resource "aws_security_group" "ec2_sg" {
   name        = var.ec2_sg
   description = "Allow 443 from jump server only"
 
-  vpc_id      = aws_vpc.vpc.id
+  vpc_id = aws_vpc.vpc.id
 
   ingress {
     from_port   = 22

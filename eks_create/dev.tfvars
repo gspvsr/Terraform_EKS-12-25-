@@ -31,7 +31,7 @@ addons = [
   },
   {
     name    = "kube-proxy"
-    version = "v1.33.5-eksbuild.2"  # <-- valid for cluster 1.33
+    version = "v1.33.5-eksbuild.2" # <-- valid for cluster 1.33
   },
   {
     name    = "aws-ebs-csi-driver"
@@ -52,10 +52,10 @@ max_capacity_on_spot     = 3
 spot_instance_types      = ["c5a.large", "c5a.xlarge", "m5a.large", "m5a.xlarge", "c5.large"]
 
 
-ec2-iam-role = "ec2-ssm-role"
-ec2-iam-role-policy = "ec2-ssm-role-policy"
+ec2-iam-role             = "ec2-ssm-role"
+ec2-iam-role-policy      = "ec2-ssm-role-policy"
 ec2-iam-instance-profile = "ec2-ssm-instance-profile"
 
 ec2_name = "dev"
-ec2_sg = "ec2_sg"
+ec2_sg   = "ec2_sg"
 
