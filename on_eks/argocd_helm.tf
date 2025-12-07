@@ -19,5 +19,7 @@ resource "helm_release" "argocd" {
     name  = "server.ingress.enabled"
     value = "false"
   }
-
+depends_on = [
+    helm_release.aws_load_balancer_controller
+  ]
 }
