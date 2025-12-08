@@ -16,7 +16,7 @@ resource "helm_release" "karpenter" {
     },
     {
       name  = "controller.clusterEndpoint"
-      value = data.aws_eks_cluster.eks.endpoint
+      value = data.aws_eks_cluster.eks-cluster.endpoint
     }
   ]
 }
