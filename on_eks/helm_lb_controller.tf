@@ -7,7 +7,7 @@ resource "helm_release" "aws_load_balancer_controller" {
 
   set = [
     { name = "clusterName"       , value = var.cluster_name },
-    { name = "region"            , value = var.aws_region },
+    { name = "region"            , value = var.aws-region },
     { name = "vpcId"             , value = data.aws_vpc.vpc.id },
     { name = "serviceAccount.create", value = "false" },
     { name = "serviceAccount.name", value = "aws-load-balancer-controller" }
