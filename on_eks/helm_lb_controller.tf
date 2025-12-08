@@ -3,7 +3,7 @@ resource "helm_release" "aws_load_balancer_controller" {
   namespace  = "aws-loadbalancer-controller"
   repository = "https://aws.github.io/eks-charts"
   chart      = "aws-loadbalancer-controller"
-  version    = "1.5.3"
+  version = "1.9.1"
 
   set = [
     {
