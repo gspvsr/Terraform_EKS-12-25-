@@ -1,38 +1,26 @@
 resource "helm_release" "aws_load_balancer_controller" {
-  name             = "aws-load-balancer-controller"
-  repository       = "https://aws.github.io/eks-charts"
-  chart            = "aws-load-balancer-controller"
-  version          = "1.7.2"
-  namespace        = "aws-loadbalancer-controller"
+  name       = "aws-load-balancer-controller"
+  namespace  = "aws-loadbalancer-controller"
+  repository = "https://aws.github.io/eks-charts"
+  chart      = "aws-loadbalancer-controller"
+  version    = "1.5.3"
 
-  create_namespace = true
-
-  set {
-    name  = "clusterName"
-    value = "ap-medium"
-  }
-
-  set {
-    name  = "serviceAccount.create"
-    value = "false"
-  }
-
-  set {
-    name  = "serviceAccount.name"
-    value = "aws-load-balancer-controller"
-  }
-
-  set {
-    name  = "region"
-    value = var.aws-region
-  }
-
-  set {
-    name  = "vpcId"
-    value = data.aws_vpc.vpc.id
-  }
-
-  depends_on = [
-    kubernetes_service_account.lb_controller
+  set = [
+    {
+      name  = "clusterName"
+      value = var.cluster_name
+    },
+    {
+      name  = "serviceAccount.create"
+      value = "false"
+    },
+    {
+      name  = "serviceAccount.name"
+      value = "aws-load-balancer-controller"
+    },
+    {
+      name  = "region"
+      value = var.region
+    }
   ]
 }
