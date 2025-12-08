@@ -1,10 +1,13 @@
 resource "helm_release" "karpenter" {
   name               = "karpenter"
   namespace          = "karpenter"
-  repository         = "https://charts.karpenter.sh"
+  repository         = "oci://public.ecr.aws/karpenter"
   chart              = "karpenter"
-  version            = "1.8.2" # <--- **CHANGE THIS TO THE LATEST STABLE VERSION**
+  version            = "1.8.2" 
   create_namespace   = true
+
+  # ➡️ CRITICAL: Ensures CRDs are applied before the controller deployment
+  depends_on         = [helm_release.karpenter_crd] 
 
   set = [
     {
