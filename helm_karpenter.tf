@@ -12,7 +12,7 @@ resource "helm_release" "karpenter" {
     },
     {
       name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
-      value = aws_iam_role.karpenter_irsa.arn
+      value = aws_iam_role.karpenter_controller.arn
     },
     {
       name  = "controller.clusterEndpoint"

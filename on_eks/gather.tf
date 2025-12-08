@@ -1,14 +1,14 @@
 data "aws_eks_cluster" "eks-cluster" {
-  name = "ap-medium"
+  name = var.cluster_name
 }
 
 data "aws_eks_cluster_auth" "eks-cluster-auth" {
-  name = "ap-medium"
+  name = var.cluster_name
 }
 
 data "aws_vpc" "vpc" {
   tags = {
-    Name = "ap-medium"
+    Name = var.cluster_name
   }
 }
 
