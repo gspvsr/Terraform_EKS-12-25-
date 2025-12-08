@@ -1,6 +1,6 @@
 resource "aws_iam_policy" "lb-controller-policy" {
-  name        = "AWSLoadBalancerControllerIAMPolicy"
-  policy      = file("iam_policy.json")
+  name   = "AWSLoadBalancerControllerIAMPolicy"
+  policy = file("iam_policy.json")
 }
 
 resource "aws_iam_role" "lb_controller_role" {
@@ -9,13 +9,15 @@ resource "aws_iam_role" "lb_controller_role" {
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
-      Effect    = "Allow"
-      Action    = "sts:AssumeRoleWithWebIdentity"
-      Principal = { Federated = module.eks.oidc-arn }
-
+      Effect = "Allow"
+      Action = "sts:AssumeRoleWithWebIdentity"
+      Principal = {
+        Federated = aws_iam_openid_connect_provider.eks.arn
+      }
       Condition = {
         StringEquals = {
-          "${module.eks.oidc-url}:sub" = "system:serviceaccount:aws-loadbalancer-controller:aws-load-balancer-controller"
+          "${replace(data.aws_eks_cluster.eks-cluster.identity[0].oidc[0].issuer, "https://", "")}:sub" =
+          "system:serviceaccount:aws-loadbalancer-controller:aws-load-balancer-controller"
         }
       }
     }]
@@ -32,7 +34,6 @@ resource "kubernetes_namespace" "aws_lb_ns" {
     name = "aws-loadbalancer-controller"
   }
 }
-
 
 # Create the service account
 resource "kubernetes_service_account" "lb_controller" {
