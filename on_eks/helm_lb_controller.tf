@@ -11,7 +11,7 @@ resource "helm_release" "aws_load_balancer_controller" {
   create_namespace   = true
 
   # CRITICAL: Ensures the controller has time to come up before dependent resources
-  timeout            = "5m" 
+  timeout = 300
 
   set = [
     {
