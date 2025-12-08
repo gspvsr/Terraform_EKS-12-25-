@@ -1,10 +1,10 @@
 resource "helm_release" "karpenter" {
-  name       = "karpenter"
-  namespace  = "karpenter"
-  repository = "https://charts.karpenter.sh"
-  chart      = "karpenter"
-  version    = "v0.37.2"  # latest available
-  create_namespace = true
+  name               = "karpenter"
+  namespace          = "karpenter"
+  repository         = "https://charts.karpenter.sh"
+  chart              = "karpenter"
+  version            = "1.8.2" # <--- **CHANGE THIS TO THE LATEST STABLE VERSION**
+  create_namespace   = true
 
   set = [
     {
