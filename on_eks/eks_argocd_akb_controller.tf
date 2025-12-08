@@ -1,3 +1,7 @@
+locals {
+  lb_controller_sub = "${replace(data.aws_eks_cluster.eks-cluster.identity[0].oidc[0].issuer, "https://", "")}:sub"
+}
+
 resource "aws_iam_role" "lb_controller_role" {
   name = "AWSLoadBalancerControllerRole"
 
@@ -11,13 +15,13 @@ resource "aws_iam_role" "lb_controller_role" {
       }
       Condition = {
         StringEquals = {
-          "${replace(data.aws_eks_cluster.eks-cluster.identity[0].oidc[0].issuer, "https://", "")}:sub" =>
-          "system:serviceaccount:aws-loadbalancer-controller:aws-load-balancer-controller"
+          "${local.lb_controller_sub}" = "system:serviceaccount:aws-loadbalancer-controller:aws-load-balancer-controller"
         }
       }
     }]
   })
 }
+
 
 
 resource "aws_iam_role_policy_attachment" "alb_attach" {
