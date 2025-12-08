@@ -7,9 +7,7 @@ data "aws_eks_cluster_auth" "eks-cluster-auth" {
 }
 
 data "aws_vpc" "vpc" {
-  tags = {
-    Name = var.cluster_name
-  }
+  id = "vpc-0123456789abcdef0"
 }
 
 data "tls_certificate" "eks" {

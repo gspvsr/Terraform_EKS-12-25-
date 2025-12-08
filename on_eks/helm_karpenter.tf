@@ -3,7 +3,8 @@ resource "helm_release" "karpenter" {
   namespace  = "karpenter"
   repository = "https://charts.karpenter.sh"
   chart      = "karpenter"
-  version    = "1.0.0"
+  version    = "v0.36.1"  # <- updated version
+  create_namespace = true
 
   set = [
     {
