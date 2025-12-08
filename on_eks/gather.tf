@@ -7,7 +7,7 @@ data "aws_eks_cluster_auth" "eks-cluster-auth" {
 }
 
 data "aws_vpc" "vpc" {
-  id = "vpc-0123456789abcdef0"
+  id = "vpc-09cbf860b810f0cb8" # <-- replace with your real VPC ID
 }
 
 data "tls_certificate" "eks" {
