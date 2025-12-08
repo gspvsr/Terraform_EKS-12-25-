@@ -20,7 +20,7 @@ resource "helm_release" "aws_load_balancer_controller" {
     },
     {
       name  = "region"
-      value = var.region
+      value = var.aws-region
     }
   ]
 }
