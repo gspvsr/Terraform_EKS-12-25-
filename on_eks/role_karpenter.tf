@@ -9,7 +9,7 @@ data "aws_iam_policy_document" "karpenter_assume_role" {
 
     condition {
       test     = "StringEquals"
-      variable = "${replace(data.aws_eks_cluster.eks.identity[0].oidc[0].issuer, "https://", "")}:sub"
+      variable = "${replace(data.aws_eks_cluster.eks-cluster.identity[0].oidc[0].issuer, "https://", "")}:sub"
       values   = ["system:serviceaccount:karpenter:karpenter"]
     }
   }
