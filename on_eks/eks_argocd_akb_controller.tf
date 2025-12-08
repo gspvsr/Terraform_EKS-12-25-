@@ -1,8 +1,3 @@
-resource "aws_iam_policy" "lb-controller-policy" {
-  name   = "AWSLoadBalancerControllerIAMPolicy"
-  policy = file("iam_policy.json")
-}
-
 resource "aws_iam_role" "lb_controller_role" {
   name = "AWSLoadBalancerControllerRole"
 
@@ -16,13 +11,14 @@ resource "aws_iam_role" "lb_controller_role" {
       }
       Condition = {
         StringEquals = {
-          "${replace(data.aws_eks_cluster.eks-cluster.identity[0].oidc[0].issuer, "https://", "")}:sub" =
+          "${replace(data.aws_eks_cluster.eks-cluster.identity[0].oidc[0].issuer, "https://", "")}:sub" =>
           "system:serviceaccount:aws-loadbalancer-controller:aws-load-balancer-controller"
         }
       }
     }]
   })
 }
+
 
 resource "aws_iam_role_policy_attachment" "alb_attach" {
   role       = aws_iam_role.lb_controller_role.name
