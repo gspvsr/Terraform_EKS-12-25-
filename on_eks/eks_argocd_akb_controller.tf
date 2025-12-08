@@ -18,7 +18,7 @@ resource "aws_iam_role" "lb_controller_role" {
       Effect = "Allow"
       Action = "sts:AssumeRoleWithWebIdentity"
       Principal = {
-        Federated = aws_iam_openid_connect_provider.eks.arn
+        Federated = data.aws_iam_openid_connect_provider.eks.arn
       }
       Condition = {
         StringEquals = {

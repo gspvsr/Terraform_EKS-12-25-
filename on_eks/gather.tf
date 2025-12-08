@@ -14,3 +14,7 @@ data "tls_certificate" "eks" {
   url = data.aws_eks_cluster.eks-cluster.identity[0].oidc[0].issuer
 }
 
+data "aws_iam_openid_connect_provider" "eks" {
+  arn = "arn:aws:iam::385554867848:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/F743CF08242AC0FB5B4E36700E724289"
+}
+

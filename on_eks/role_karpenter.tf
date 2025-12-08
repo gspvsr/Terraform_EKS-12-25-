@@ -4,7 +4,7 @@ data "aws_iam_policy_document" "karpenter_assume_role" {
 
     principals {
       type        = "Federated"
-      identifiers = [aws_iam_openid_connect_provider.eks.arn]
+      identifiers = [data.aws_iam_openid_connect_provider.eks.arn]
     }
 
     condition {
