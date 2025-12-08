@@ -46,14 +46,10 @@ resource "kubernetes_namespace" "aws_lb_ns" {
 resource "kubernetes_service_account" "lb_controller" {
   metadata {
     name      = "aws-load-balancer-controller"
-    namespace = "aws-loadbalancer-controller"
+    namespace = "kube-system"
+
     annotations = {
       "eks.amazonaws.com/role-arn" = aws_iam_role.lb_controller_role.arn
     }
   }
-
-  depends_on = [
-    aws_iam_role_policy_attachment.alb_attach,
-    kubernetes_namespace.aws_lb_ns
-  ]
 }
