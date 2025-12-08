@@ -31,7 +31,7 @@ resource "helm_release" "aws_load_balancer_controller" {
     {
       # This is a required value for the controller to function in the correct region
       name  = "awsRegion" 
-      value = var.aws_region # Changed to follow standard variable naming, ensure your variable is spelled correctly
+      value = var.aws-region # Changed to follow standard variable naming, ensure your variable is spelled correctly
     },
     {
       # Recommended to enable the webhook for service type LoadBalancer mutation

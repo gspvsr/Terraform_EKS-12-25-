@@ -1,3 +1,17 @@
+# 1. Install Karpenter CRDs (Custom Resource Definitions)
+resource "helm_release" "karpenter_crd" {
+  # This resource must be defined because your main 'karpenter' release depends on it.
+  name             = "karpenter-crd"
+  namespace        = "karpenter"
+  
+  # Ensure the repository, chart, and version match the main controller settings
+  repository       = "oci://public.ecr.aws/karpenter"
+  chart            = "karpenter-crd"
+  version          = "1.8.2" 
+  create_namespace = true
+}
+
+
 resource "helm_release" "karpenter" {
   name               = "karpenter"
   namespace          = "karpenter"
