@@ -17,11 +17,10 @@ terraform {
     }
   }
   backend "s3" {
-    bucket         = "gsp-config-bucket-delete"
-    key            = "terraform/EKS.tf"
-    dynamodb_table = "terraform-lock-table"
-    encrypt        = true
-    region         = "us-east-1"
+    bucket  = "gsp-config-bucket-delete"
+    key     = "terraform/EKS.tfstate"
+    region  = "us-east-1"
+    encrypt = true
   }
 }
 
