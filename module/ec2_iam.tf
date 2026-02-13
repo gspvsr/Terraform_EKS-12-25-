@@ -64,7 +64,14 @@ resource "aws_iam_role_policy" "iam-role-policy" {
           "ec2messages:SendReply"
         ],
         Resource : "*"
-      }
+      },
+      {
+  Effect = "Allow"
+  Action = [
+    "eks:DescribeCluster"
+  ]
+  Resource = "*"
+}
     ]
   })
 }
