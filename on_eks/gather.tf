@@ -15,6 +15,6 @@ data "tls_certificate" "eks" {
 }
 
 data "aws_iam_openid_connect_provider" "eks" {
-  arn = "arn:aws:iam::385554867848:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/F743CF08242AC0FB5B4E36700E724289"
+  arn = "arn:aws:iam::847713921303:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/B5547E6F1A86BFF52A6EBBD72171E116"
 }
 
