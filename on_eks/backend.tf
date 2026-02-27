@@ -17,7 +17,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "remote-state-backend32"
+    bucket         = "gspbucket-1983"
     key            = "terraform/on_eks.tf"
     dynamodb_table = "terraform-lock-table"
     encrypt        = true
