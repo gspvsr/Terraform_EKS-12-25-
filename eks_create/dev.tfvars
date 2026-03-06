@@ -42,7 +42,7 @@ addons = [
 
 desired_capacity_on_demand = 1
 min_capacity_on_demand     = 1
-max_capacity_on_demand     = 1
+max_capacity_on_demand     = 3
 ondemand_instance_types    = ["t3a.medium", "t3.medium", "t2.medium", "m5.large", "m5a.large"]
 
 
