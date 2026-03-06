@@ -40,13 +40,13 @@ addons = [
 ]
 
 
-desired_capacity_on_demand = 3
-min_capacity_on_demand     = 1
-max_capacity_on_demand     = 4
-ondemand_instance_types    = ["t3a.medium", "t3.medium", "t2.medium", "m5.large", "m5a.large"]
+#desired_capacity_on_demand = 0
+#min_capacity_on_demand     = 0
+#max_capacity_on_demand     = 
+#ondemand_instance_types    = ["t3a.medium", "t3.medium", "t2.medium", "m5.large", "m5a.large"]
 
 
-desired_capacity_on_spot = 1
+desired_capacity_on_spot = 3
 min_capacity_on_spot     = 1
 max_capacity_on_spot     = 3
 spot_instance_types      = ["c5a.large", "c5a.xlarge", "m5a.large", "m5a.xlarge", "c5.large"]
