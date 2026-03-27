@@ -17,7 +17,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket  = "gsp-config-bucket-delete"
+    bucket  = "gsp-config-bucket-delete1"
     key     = "terraform/EKS.tfstate"
     region  = "us-east-1"
     encrypt = true
